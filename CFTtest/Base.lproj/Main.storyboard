@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UNf-kB-M3H">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -19,14 +19,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ppT-Ze-WEl" userLabel="Scroll">
-                                <rect key="frame" x="0.0" y="15" width="393" height="837"/>
+                                <rect key="frame" x="0.0" y="155" width="393" height="697"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ijh-u5-lhB" userLabel="Page">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="390"/>
+                                        <rect key="frame" x="0.0" y="15" width="393" height="315"/>
                                         <subviews>
                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" verticalHuggingPriority="249" placeholderIntrinsicWidth="360" placeholderIntrinsicHeight="300" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="MhB-6k-UrB" userLabel="Groups" customClass="DynamicHeightCollectionView" customModule="CFTtest" customModuleProvider="target">
-                                                <rect key="frame" x="15" y="75" width="363" height="300"/>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <rect key="frame" x="15" y="0.0" width="363" height="300"/>
+                                                <color key="backgroundColor" name="FrontBack"/>
                                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="bnr-an-8gq">
                                                     <size key="itemSize" width="175" height="175"/>
                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -93,10 +93,16 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="containerView" destination="bmy-gc-QJQ" id="Btc-sq-Lbv"/>
+                                                            <outlet property="emojiLabel" destination="dMG-N0-G1U" id="kWm-Qs-0FK"/>
                                                             <outlet property="noteName" destination="Euf-fO-iC1" id="kde-tI-dp8"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="20"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <outlet property="dataSource" destination="z3y-fb-U35" id="LQk-Nr-uGz"/>
                                                     <outlet property="delegate" destination="z3y-fb-U35" id="GMO-rn-zTz"/>
@@ -106,18 +112,18 @@
                                         <constraints>
                                             <constraint firstItem="MhB-6k-UrB" firstAttribute="leading" secondItem="Ijh-u5-lhB" secondAttribute="leading" constant="15" id="PIf-8y-1h4"/>
                                             <constraint firstAttribute="bottom" secondItem="MhB-6k-UrB" secondAttribute="bottom" constant="15" id="cEE-zN-xMq"/>
-                                            <constraint firstItem="MhB-6k-UrB" firstAttribute="top" secondItem="Ijh-u5-lhB" secondAttribute="top" constant="75" id="kvm-Xe-Ghe"/>
+                                            <constraint firstItem="MhB-6k-UrB" firstAttribute="top" secondItem="Ijh-u5-lhB" secondAttribute="top" id="kvm-Xe-Ghe"/>
                                             <constraint firstAttribute="trailing" secondItem="MhB-6k-UrB" secondAttribute="trailing" constant="15" id="uEc-U8-UZ5"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="Ijh-u5-lhB" firstAttribute="width" secondItem="ppT-Ze-WEl" secondAttribute="width" id="17F-Pt-ukL"/>
-                                    <constraint firstAttribute="bottom" secondItem="Ijh-u5-lhB" secondAttribute="bottom" id="BA7-1d-qog"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ijh-u5-lhB" secondAttribute="bottom" constant="359" id="BA7-1d-qog"/>
                                     <constraint firstItem="Ijh-u5-lhB" firstAttribute="leading" secondItem="2ZB-X8-Pr4" secondAttribute="leading" id="D3c-6z-SRn"/>
                                     <constraint firstItem="Ijh-u5-lhB" firstAttribute="leading" secondItem="ppT-Ze-WEl" secondAttribute="leading" id="Saq-ik-HKO"/>
                                     <constraint firstItem="Ijh-u5-lhB" firstAttribute="top" secondItem="2ZB-X8-Pr4" secondAttribute="top" id="Z5e-JD-njN"/>
-                                    <constraint firstItem="Ijh-u5-lhB" firstAttribute="top" secondItem="ppT-Ze-WEl" secondAttribute="top" id="cBx-ve-c21"/>
+                                    <constraint firstItem="Ijh-u5-lhB" firstAttribute="top" secondItem="ppT-Ze-WEl" secondAttribute="top" constant="15" id="cBx-ve-c21"/>
                                     <constraint firstAttribute="trailing" secondItem="Ijh-u5-lhB" secondAttribute="trailing" id="cjM-KD-EmU"/>
                                     <constraint firstItem="Ijh-u5-lhB" firstAttribute="trailing" secondItem="2ZB-X8-Pr4" secondAttribute="trailing" id="o7x-Pd-YRz"/>
                                 </constraints>
@@ -131,10 +137,17 @@
                             <constraint firstItem="ppT-Ze-WEl" firstAttribute="bottom" secondItem="y3a-UN-0FT" secondAttribute="bottom" constant="34" id="1FI-OH-wzz"/>
                             <constraint firstItem="ppT-Ze-WEl" firstAttribute="leading" secondItem="y3a-UN-0FT" secondAttribute="leading" id="6sj-KL-GTn"/>
                             <constraint firstItem="y3a-UN-0FT" firstAttribute="trailing" secondItem="ppT-Ze-WEl" secondAttribute="trailing" id="Quw-s6-qYw"/>
-                            <constraint firstItem="y3a-UN-0FT" firstAttribute="top" secondItem="ppT-Ze-WEl" secondAttribute="top" constant="88" id="tlD-6Z-teJ"/>
+                            <constraint firstItem="ppT-Ze-WEl" firstAttribute="top" secondItem="y3a-UN-0FT" secondAttribute="top" id="tOb-dR-VE6"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="NpJ-23-7m5"/>
+                    <navigationItem key="navigationItem" title="Notes" id="NpJ-23-7m5">
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="XXS-su-NUJ">
+                            <color key="tintColor" systemColor="labelColor"/>
+                            <connections>
+                                <action selector="addNote:" destination="z3y-fb-U35" id="AYe-7b-4eZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="background" destination="uoU-k1-sqC" id="ucl-vC-G8J"/>
                         <outlet property="noteCV" destination="MhB-6k-UrB" id="2Vr-YN-uWS"/>
@@ -150,8 +163,8 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="UNf-kB-M3H" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vLH-mt-MTQ">
-                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="vLH-mt-MTQ">
+                        <rect key="frame" x="0.0" y="59" width="393" height="96"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -170,9 +183,15 @@
         </designable>
     </designables>
     <resources>
+        <namedColor name="FrontBack">
+            <color red="0.079000003635883331" green="0.086000002920627594" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <namedColor name="PurpleBlackBerry">
             <color red="0.83499997854232788" green="0.75099998712539673" blue="0.86299997568130493" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -20,6 +20,9 @@ class ViewController: UIViewController {
     
     var notes: [NSManagedObject] = []
     
+    let colors: [String] = ["GreenAvocado", "BlueBerry", "BrownSugar", "GreyCloud", "PurpleBlackBerry", "RedStrawBerry", "RosePink", "YellowLemon"]
+    let emojies: [String] = ["🥳", "😍", "😎", "🤬", "🤡", "👻", "💀"]
+    
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,9 +36,62 @@ class ViewController: UIViewController {
         scrollView.alwaysBounceVertical = true
         scrollView.bounces = true
         
+        
+}
+    
+    @IBAction func addNote(_ sender: UIBarButtonItem) {
+        
+        let alert = UIAlertController(title: "New note", message: "Enter a name for the note", preferredStyle: .alert)
+        
+        // save action button
+        let saveAction = UIAlertAction(title: "Save", style: .default) { [unowned self] action in
+            
+            guard
+                let textField = alert.textFields?.first,
+                let noteToSave = textField.text
+            else {
+                return
+            }
+            // add a note
+            save(noteName: noteToSave, noteColor: colors.randomElement() ?? "BlueBerry", emoji: emojies.randomElement() ?? "🥺")
+            
+        }
+        // cancel action button
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addTextField()
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        
+        present(alert, animated: true)
+        
     }
     
+    func save(noteName: String, noteColor: String, emoji: String) {
+        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
+        let managedContext = appDelegate.persistentContainerOffline.viewContext
+        
+        let entity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)!
+        let note = NSManagedObject(entity: entity, insertInto: managedContext)
+        
+        note.setValue(noteName, forKey: "name")
+        note.setValue(noteColor, forKey: "color")
+        note.setValue((notes.count) + 1, forKey: "number")
+        note.setValue(emoji, forKey: "emoji")
+        
+        do {
+            notes.insert(note, at: 0)
+
+            print("Successfully added")
+            try managedContext.save()
+            
+            noteCV.reloadData()
+        } catch let error as NSError {
+            print("Could not save. \(error), \(error.userInfo)")
+        }
+    }
     
+    // MARK: - Functions
     func fetchData() {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else { return }
         let viewContext       = appDelegate.persistentContainerOffline.viewContext
@@ -52,6 +108,7 @@ class ViewController: UIViewController {
     
 }
 
+// MARK: - UICollectionView extension
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -65,6 +122,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource {
         
         cell.setNoteName(label: note.value(forKey: "name") as? String ?? "default name")
         cell.setBackground(color: note.value(forKey: "color") as? String ?? "GreenAvocado")
+        cell.setEmoji(emoji: note.value(forKey: "emoji") as? String ?? "😭")
         
         cell.contentView.translatesAutoresizingMaskIntoConstraints = false
         
