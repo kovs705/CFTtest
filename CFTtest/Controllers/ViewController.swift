@@ -39,6 +39,15 @@ class ViewController: UIViewController {
         
 }
     
+    // MARK: - Segue for Note detail
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination = segue.destination as? NoteViewController,
+           let noteIndex = noteCV.indexPathsForSelectedItems?.first {
+            destination.note = self.notes[noteIndex.row] as! Note
+        }
+    }
+    
+    
     @IBAction func addNote(_ sender: UIBarButtonItem) {
         
         let alert = UIAlertController(title: "New note", message: "Enter a name for the note", preferredStyle: .alert)
