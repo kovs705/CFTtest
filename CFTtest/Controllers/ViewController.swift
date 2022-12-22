@@ -74,10 +74,15 @@ class ViewController: UIViewController {
         let entity = NSEntityDescription.entity(forEntityName: "Note", in: managedContext)!
         let note = NSManagedObject(entity: entity, insertInto: managedContext)
         
-        note.setValue(noteName, forKey: "name")
         note.setValue(noteColor, forKey: "color")
         note.setValue((notes.count) + 1, forKey: "number")
         note.setValue(emoji, forKey: "emoji")
+        if emoji == "💀" {
+            note.setValue("Man, you're dead", forKey: "name")
+        } else {
+            note.setValue(noteName, forKey: "name")
+        }
+        note.setValue("Start typing here!", forKey: "text")
         
         do {
             notes.insert(note, at: 0)

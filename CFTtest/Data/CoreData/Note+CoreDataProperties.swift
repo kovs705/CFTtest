@@ -19,6 +19,7 @@ extension Note {
     @NSManaged public var color: String?
     @NSManaged public var name: String?
     @NSManaged public var emoji: String?
+    @NSManaged public var text: String?
     
     @NSManaged public var lastTimeChanged: Date?
     
