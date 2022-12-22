@@ -20,6 +20,30 @@ func returnUIColorFromString(string: String) -> UIColor? {
     return UIColor(named: string)
 }
 
+extension UIColor {
+    static func appColor(_ name: AssetsColor) -> UIColor? {
+        return UIColor(named: name.rawValue)
+    }
+    static func getUIColor(_ name: String) -> UIColor? {
+        return UIColor(named: name)
+    }
+    
+}
+
+enum AssetsColor: String {
+    case BlueBerry
+    case BrownSugar
+    case DarkBackground
+    case GreenAvocado
+    case GreyCloud
+    case LightPart
+    case PurpleBlackBerry
+    case RedStrawBerry
+    case RosePink
+    case TextForegroundColor
+    case YellowLemon
+}
+
 
 // MARK: - Dynamic height for collectionView
 class DynamicHeightCollectionView: UICollectionView {

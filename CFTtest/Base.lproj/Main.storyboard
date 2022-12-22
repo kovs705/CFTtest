@@ -34,22 +34,16 @@
                                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="10"/>
                                                 </collectionViewFlowLayout>
                                                 <cells>
-                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" restorationIdentifier="groupCell" reuseIdentifier="note" id="5eo-Aj-jEN" customClass="groupViewCell" customModule="BlockNote_app" customModuleProvider="target">
+                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" restorationIdentifier="groupCell" reuseIdentifier="note" id="5eo-Aj-jEN" customClass="noteCell" customModule="CFTtest" customModuleProvider="target">
                                                         <rect key="frame" x="10" y="10" width="165" height="165"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bmy-gc-QJQ">
                                                             <rect key="frame" x="0.0" y="0.0" width="165" height="165"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Group name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Euf-fO-iC1">
-                                                                    <rect key="frame" x="13" y="111.33333333333333" width="147" height="20.333333333333329"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Euf-fO-iC1">
+                                                                    <rect key="frame" x="13" y="124.66666666666667" width="147" height="20.333333333333329"/>
                                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                                    <nil key="textColor"/>
-                                                                    <nil key="highlightedColor"/>
-                                                                </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xwR-xj-Ghv">
-                                                                    <rect key="frame" x="13" y="131.66666666666666" width="147" height="20.333333333333343"/>
-                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -82,12 +76,8 @@
                                                                 <constraint firstItem="a3P-Nv-bZ2" firstAttribute="top" secondItem="bmy-gc-QJQ" secondAttribute="top" constant="13" id="4dz-Tb-b2u"/>
                                                                 <constraint firstAttribute="trailing" secondItem="Euf-fO-iC1" secondAttribute="trailing" constant="5" id="9fo-H7-xH9"/>
                                                                 <constraint firstItem="a3P-Nv-bZ2" firstAttribute="leading" secondItem="bmy-gc-QJQ" secondAttribute="leading" constant="13" id="Kfd-br-4Is"/>
-                                                                <constraint firstAttribute="trailing" secondItem="xwR-xj-Ghv" secondAttribute="trailing" constant="5" id="Lhr-Lp-sUu"/>
                                                                 <constraint firstItem="Euf-fO-iC1" firstAttribute="leading" secondItem="bmy-gc-QJQ" secondAttribute="leading" constant="13" id="PGy-9r-B8b"/>
-                                                                <constraint firstItem="xwR-xj-Ghv" firstAttribute="top" secondItem="Euf-fO-iC1" secondAttribute="bottom" id="VS4-uW-poZ"/>
-                                                                <constraint firstItem="xwR-xj-Ghv" firstAttribute="leading" secondItem="bmy-gc-QJQ" secondAttribute="leading" constant="13" id="agI-nW-kRZ"/>
-                                                                <constraint firstAttribute="bottom" secondItem="xwR-xj-Ghv" secondAttribute="bottom" constant="13" id="hfe-K0-gYc"/>
-                                                                <constraint firstItem="xwR-xj-Ghv" firstAttribute="top" secondItem="Euf-fO-iC1" secondAttribute="bottom" id="qAF-OD-1FN"/>
+                                                                <constraint firstAttribute="bottom" secondItem="Euf-fO-iC1" secondAttribute="bottom" constant="20" id="vev-rT-zLr"/>
                                                             </constraints>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -103,8 +93,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <outlet property="containerView" destination="bmy-gc-QJQ" id="Btc-sq-Lbv"/>
-                                                            <outlet property="groupName" destination="Euf-fO-iC1" id="v4N-KB-OIQ"/>
-                                                            <outlet property="numberOfNotes" destination="xwR-xj-Ghv" id="duC-Ue-Kpy"/>
+                                                            <outlet property="noteName" destination="Euf-fO-iC1" id="kde-tI-dp8"/>
                                                         </connections>
                                                     </collectionViewCell>
                                                 </cells>
