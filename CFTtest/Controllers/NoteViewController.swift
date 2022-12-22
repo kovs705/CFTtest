@@ -25,6 +25,8 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        scrollView.alwaysBounceVertical = true
+        
         title = "\(note.emoji ?? "🤕") \(note.name ?? "Default name?...")"
         
         if image.image == nil {
@@ -35,6 +37,19 @@ class NoteViewController: UIViewController, UITextViewDelegate {
         textView.text = note.text
         
     }
+    
+    @IBAction func addPhoto(_ sender: UIButton) {
+        showPhotoPicker()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        if image.image == nil {
+            image.isHidden = true
+        } else {
+            image.isHidden = false
+        }
+    }
+    
     
     // MARK: - ImagePicker
     @objc func showPhotoPicker() {
@@ -97,12 +112,7 @@ extension NoteViewController: UIImagePickerControllerDelegate, UINavigationContr
         }
         
         let managedContext = appDelegate.persistentContainerOffline.viewContext
-        
-        let entity =
-        NSEntityDescription.entity(forEntityName: "Note", in: managedContext)!
-        
-        let note = NSManagedObject(entity: entity, insertInto: managedContext)
-        
+
         guard let pickedImage = info[.originalImage] as? UIImage else {
             return
         }
@@ -114,6 +124,9 @@ extension NoteViewController: UIImagePickerControllerDelegate, UINavigationContr
             if managedContext.hasChanges {
                 picker.dismiss(animated: true)
                 try managedContext.save()
+                image.isHidden = false
+                image.layoutIfNeeded()
+                print("Saved")
             } else {
                 print("No changes with images")
             }

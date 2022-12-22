@@ -184,6 +184,9 @@
                                                 <color key="tintColor" systemColor="systemGray6Color"/>
                                                 <state key="normal" title="Button"/>
                                                 <buttonConfiguration key="configuration" style="filled" title="No images... Click to add new!"/>
+                                                <connections>
+                                                    <action selector="addPhoto:" destination="kYF-tE-xJk" eventType="touchUpInside" id="Tun-Wo-hTM"/>
+                                                </connections>
                                             </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zXD-bG-fxn">
                                                 <rect key="frame" x="0.0" y="0.0" width="393" height="250"/>
@@ -234,6 +237,8 @@
                                     <constraint firstItem="JFB-ym-7Kr" firstAttribute="width" secondItem="0D3-rn-ZFj" secondAttribute="width" id="b57-Xk-rwL"/>
                                     <constraint firstItem="JFB-ym-7Kr" firstAttribute="leading" secondItem="0D3-rn-ZFj" secondAttribute="leading" id="eJr-Kb-fma"/>
                                 </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="6K7-3U-vuT"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="YGj-hO-Ao1"/>
                             </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Tc7-pJ-LEi"/>
