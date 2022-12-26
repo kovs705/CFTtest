@@ -24,7 +24,17 @@ extension Note {
     @NSManaged public var lastTimeChanged: Date?
     
     @NSManaged public var photo: Data?
+}
 
+extension NSManagedObject {
+    func addObject(value: NSManagedObject, forKey key: String) {
+        let note = self.mutableSetValue(forKey: key)
+        note.add(value)
+    }
+    func removeObject(value: NSManagedObject, forKey key: String) {
+        let note = self.mutableSetValue(forKey: key)
+        note.remove(value)
+    }
 }
 
 extension Note : Identifiable {

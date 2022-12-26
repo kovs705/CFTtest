@@ -43,7 +43,8 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? NoteViewController,
            let noteIndex = noteCV.indexPathsForSelectedItems?.first {
-            destination.note = self.notes[noteIndex.row] as! Note
+            let note = self.notes[noteIndex.row] as! Note
+            destination.note = note
         }
     }
     
@@ -92,6 +93,7 @@ class ViewController: UIViewController {
             note.setValue(noteName, forKey: "name")
         }
         note.setValue("Start typing here!", forKey: "text")
+        note.setValue(nil, forKey: "photo")
         
         do {
             notes.insert(note, at: 0)

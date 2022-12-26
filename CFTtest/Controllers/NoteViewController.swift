@@ -20,7 +20,7 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     
     var imagePicker: UIImagePickerController!
     
-    lazy var note = Note()
+    var note = Note()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,12 +29,15 @@ class NoteViewController: UIViewController, UITextViewDelegate {
         
         title = "\(note.emoji ?? "🤕") \(note.name ?? "Default name?...")"
         
-        if image.image == nil {
-            image.isHidden = true
-        }
+        image.image = UIImage(data: (note.photo ?? UIImage(systemName: "figure.roll.runningpace")?.toData)!)
+        
+        print("Image is hidden: \(image.isHidden)")
+        print("Button is hidden: \(imageButton.isHidden)")
         
         textView.delegate = self
         textView.text = note.text
+        
+        image.frame = CGRect(x: 0, y: 0, width: image.bounds.width, height: 250)
         
     }
     
@@ -45,8 +48,14 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         if image.image == nil {
             image.isHidden = true
+            imageButton.isHidden = false
+            imageButton.layoutIfNeeded()
+            image.layoutIfNeeded()
         } else {
             image.isHidden = false
+            imageButton.isHidden = true
+            imageButton.layoutIfNeeded()
+            image.layoutIfNeeded()
         }
     }
     
@@ -106,34 +115,30 @@ extension NoteViewController: UIImagePickerControllerDelegate, UINavigationContr
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            return
-        }
-        
-        let managedContext = appDelegate.persistentContainerOffline.viewContext
 
         guard let pickedImage = info[.originalImage] as? UIImage else {
             return
         }
         
-        note.setValue(pickedImage.toData as? NSData, forKey: "photo")
+        let photoData = pickedImage.pngData()
+        
+        note.setValue(photoData as? NSData, forKey: "photo")
         note.setValue(Date(), forKey: "lastTimeChanged")
         
-        do {
-            if managedContext.hasChanges {
-                picker.dismiss(animated: true)
-                try managedContext.save()
-                image.isHidden = false
-                image.layoutIfNeeded()
-                print("Saved")
-            } else {
-                print("No changes with images")
-            }
-        } catch {
-            print("OKay, it crashed somehow")
-        }
+        delegateSave()
         
+        picker.dismiss(animated: true)
+        image.isHidden = false
+        imageButton.isHidden = true
+        
+        imageButton.layoutIfNeeded()
+        image.layoutIfNeeded()
+        
+        print("Image is hidden: \(image.isHidden)")
+        print("Button is hidden: \(imageButton.isHidden)")
+        
+        print("Saved")
+        print("\(String(describing: note.lastTimeChanged))")
     }
 }
 

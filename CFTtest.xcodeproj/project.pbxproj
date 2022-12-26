@@ -53,6 +53,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4E8C36CB2957AE6200D212EC /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				4E98DF8C29546D8900B21EE9 /* Note+CoreDataClass.swift */,
+				4E98DF8D29546D8900B21EE9 /* Note+CoreDataProperties.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
 		4E98DF6629546B1200B21EE9 = {
 			isa = PBXGroup;
 			children = (
@@ -116,8 +125,7 @@
 		4E98DF95295473FE00B21EE9 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				4E98DF8C29546D8900B21EE9 /* Note+CoreDataClass.swift */,
-				4E98DF8D29546D8900B21EE9 /* Note+CoreDataProperties.swift */,
+				4E8C36CB2957AE6200D212EC /* Note */,
 				4E98DF7B29546B1200B21EE9 /* CFTtest.xcdatamodeld */,
 			);
 			path = CoreData;
