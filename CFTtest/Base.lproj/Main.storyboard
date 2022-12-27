@@ -3,6 +3,7 @@
     <device id="retina6_12" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -195,6 +196,22 @@
                                                     <constraint firstAttribute="height" constant="250" id="IaP-Dr-Bfd"/>
                                                 </constraints>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z0R-zy-wpa">
+                                                <rect key="frame" x="279" y="215" width="114" height="35"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="gray" title="Change">
+                                                    <imageReference key="image" image="photo" catalog="system" renderingMode="hierarchical-single">
+                                                        <hierarchicalColors>
+                                                            <color systemColor="labelColor"/>
+                                                            <color systemColor="secondaryLabelColor"/>
+                                                            <color systemColor="tertiaryLabelColor"/>
+                                                        </hierarchicalColors>
+                                                    </imageReference>
+                                                </buttonConfiguration>
+                                                <connections>
+                                                    <action selector="changePhoto:" destination="kYF-tE-xJk" eventType="touchUpInside" id="fno-Dv-5gv"/>
+                                                </connections>
+                                            </button>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="aEA-ut-kFC">
                                                 <rect key="frame" x="15" y="265" width="363" height="200"/>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -209,6 +226,7 @@
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="leading" secondItem="Fdo-z9-4QT" secondAttribute="leading" id="1Jb-8U-0ul"/>
                                             <constraint firstItem="Fdo-z9-4QT" firstAttribute="top" secondItem="JFB-ym-7Kr" secondAttribute="top" id="1ch-cU-n4a"/>
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="trailing" secondItem="Fdo-z9-4QT" secondAttribute="trailing" id="71u-do-fGM"/>
+                                            <constraint firstItem="z0R-zy-wpa" firstAttribute="top" secondItem="JFB-ym-7Kr" secondAttribute="top" constant="215" id="73D-6n-ZGH"/>
                                             <constraint firstAttribute="trailing" secondItem="Fdo-z9-4QT" secondAttribute="trailing" id="EsS-Ev-Yiv"/>
                                             <constraint firstItem="aEA-ut-kFC" firstAttribute="leading" secondItem="JFB-ym-7Kr" secondAttribute="leading" constant="15" id="Gub-y2-UiQ"/>
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="top" secondItem="Fdo-z9-4QT" secondAttribute="top" id="LvT-3H-JRr"/>
@@ -221,12 +239,15 @@
                                             <constraint firstAttribute="trailing" secondItem="zXD-bG-fxn" secondAttribute="trailing" id="Xvd-Ia-Tto"/>
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="top" secondItem="Fdo-z9-4QT" secondAttribute="top" id="YXM-h6-qe5"/>
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="bottom" secondItem="Fdo-z9-4QT" secondAttribute="bottom" id="alT-OL-Rcf"/>
+                                            <constraint firstAttribute="trailing" secondItem="z0R-zy-wpa" secondAttribute="trailing" id="byX-eJ-v5m"/>
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="top" secondItem="JFB-ym-7Kr" secondAttribute="top" id="cdM-XT-V4e"/>
                                             <constraint firstItem="aEA-ut-kFC" firstAttribute="top" secondItem="Fdo-z9-4QT" secondAttribute="bottom" constant="15" id="dFk-RJ-mhs"/>
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="leading" secondItem="Fdo-z9-4QT" secondAttribute="leading" id="eVK-0d-sYM"/>
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="leading" secondItem="JFB-ym-7Kr" secondAttribute="leading" id="fws-uo-Fwb"/>
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="top" secondItem="Fdo-z9-4QT" secondAttribute="top" id="ian-Ip-7ae"/>
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="bottom" secondItem="Fdo-z9-4QT" secondAttribute="bottom" id="kwA-2O-s7t"/>
+                                            <constraint firstItem="z0R-zy-wpa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JFB-ym-7Kr" secondAttribute="leading" constant="20" symbolic="YES" id="oDA-of-ieM"/>
+                                            <constraint firstItem="aEA-ut-kFC" firstAttribute="top" secondItem="z0R-zy-wpa" secondAttribute="bottom" constant="15" id="sjG-X3-6Ne"/>
                                             <constraint firstItem="zXD-bG-fxn" firstAttribute="trailing" secondItem="Fdo-z9-4QT" secondAttribute="trailing" id="zr1-yM-HCW"/>
                                         </constraints>
                                     </view>
@@ -254,6 +275,7 @@
                     <navigationItem key="navigationItem" id="bsu-Ux-GaX"/>
                     <connections>
                         <outlet property="background" destination="Mdb-83-7aE" id="O6u-Dv-hQM"/>
+                        <outlet property="changeButton" destination="z0R-zy-wpa" id="MYm-0u-4Xc"/>
                         <outlet property="image" destination="zXD-bG-fxn" id="43f-zc-ANb"/>
                         <outlet property="imageButton" destination="Fdo-z9-4QT" id="HjX-t9-OLK"/>
                         <outlet property="scrollView" destination="0D3-rn-ZFj" id="59S-Yx-CpM"/>
@@ -289,6 +311,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="photo" catalog="system" width="128" height="93"/>
         <namedColor name="FrontBack">
             <color red="0.079000003635883331" green="0.086000002920627594" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
@@ -298,11 +321,17 @@
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
+        <systemColor name="secondaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="tertiaryLabelColor">
+            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.29803921568627451" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

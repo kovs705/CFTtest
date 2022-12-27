@@ -12,11 +12,12 @@ import CoreData
 
 class NoteViewController: UIViewController, UITextViewDelegate {
     
-    @IBOutlet var background: UIView!
-    @IBOutlet var image: UIImageView!
-    @IBOutlet var textView: UITextView!
-    @IBOutlet var scrollView: UIScrollView!
-    @IBOutlet var imageButton: UIButton!
+    @IBOutlet weak var background: UIView!
+    @IBOutlet weak var image: UIImageView!
+    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var imageButton: UIButton!
+    @IBOutlet weak var changeButton: UIButton!
     
     var imagePicker: UIImagePickerController!
     
@@ -39,23 +40,27 @@ class NoteViewController: UIViewController, UITextViewDelegate {
         
         image.frame = CGRect(x: 0, y: 0, width: image.bounds.width, height: 250)
         
+        if image.image == nil || (UIImage(systemName: "figure.roll.runningpace") != nil) {
+            changeButton.isHidden = true
+        } else {
+            changeButton.isHidden = false
+        }
     }
     
     @IBAction func addPhoto(_ sender: UIButton) {
         showPhotoPicker()
     }
     
+    @IBAction func changePhoto(_ sender: UIButton) {
+        showPhotoPicker()
+    }
+    
+    
     override func viewWillAppear(_ animated: Bool) {
-        if image.image == nil {
-            image.isHidden = true
-            imageButton.isHidden = false
-            imageButton.layoutIfNeeded()
-            image.layoutIfNeeded()
+        if image.image == nil || (UIImage(systemName: "figure.roll.runningpace") != nil) {
+            changeButton.isHidden = true
         } else {
-            image.isHidden = false
-            imageButton.isHidden = true
-            imageButton.layoutIfNeeded()
-            image.layoutIfNeeded()
+            changeButton.isHidden = false
         }
     }
     
