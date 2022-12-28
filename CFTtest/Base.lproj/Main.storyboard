@@ -11,6 +11,46 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Settings-->
+        <scene sceneID="R3l-eI-ZGB">
+            <objects>
+                <viewController title="Settings" id="TKD-Lc-gI1" customClass="SettingsVC" customModule="CFTtest" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lys-28-4oI">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="91" translatesAutoresizingMaskIntoConstraints="NO" id="b4o-jn-h1n">
+                                <rect key="frame" x="31" y="59" width="331" height="32"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size of the font" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axf-By-85M">
+                                        <rect key="frame" x="0.0" y="5.9999999999999982" width="146" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="12" minimumValue="12" maximumValue="40" translatesAutoresizingMaskIntoConstraints="NO" id="fqH-42-7Vf">
+                                        <rect key="frame" x="237" y="0.0" width="94" height="32"/>
+                                    </stepper>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ZFc-3t-ef4"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="b4o-jn-h1n" secondAttribute="trailing" constant="15" id="BnA-Or-T5t"/>
+                            <constraint firstItem="b4o-jn-h1n" firstAttribute="leading" secondItem="lys-28-4oI" secondAttribute="leadingMargin" constant="15" id="Mce-gB-3UQ"/>
+                            <constraint firstItem="b4o-jn-h1n" firstAttribute="top" secondItem="lys-28-4oI" secondAttribute="topMargin" id="alB-bX-Ghr"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="fontLabel" destination="axf-By-85M" id="2M9-o8-Uaj"/>
+                        <outlet property="fontStepper" destination="fqH-42-7Vf" id="NSd-2o-oMN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mpT-r1-EeG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1653" y="-656"/>
+        </scene>
         <!--MainPage-->
         <scene sceneID="vdj-5M-lJR">
             <objects>
@@ -146,6 +186,19 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Notes" id="NpJ-23-7m5">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" id="kLy-Ug-6KU">
+                            <imageReference key="image" image="gear" catalog="system" renderingMode="hierarchical-single">
+                                <hierarchicalColors>
+                                    <color systemColor="labelColor"/>
+                                    <color systemColor="secondaryLabelColor"/>
+                                    <color systemColor="tertiaryLabelColor"/>
+                                </hierarchicalColors>
+                            </imageReference>
+                            <connections>
+                                <action selector="openSettings:" destination="z3y-fb-U35" id="92Q-kQ-eAQ"/>
+                                <segue destination="TKD-Lc-gI1" kind="presentation" modalTransitionStyle="partialCurl" id="eb3-3f-fav"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="XXS-su-NUJ">
                             <color key="tintColor" systemColor="labelColor"/>
                             <connections>
@@ -311,6 +364,7 @@
         </designable>
     </designables>
     <resources>
+        <image name="gear" catalog="system" width="128" height="122"/>
         <image name="photo" catalog="system" width="128" height="93"/>
         <namedColor name="FrontBack">
             <color red="0.079000003635883331" green="0.086000002920627594" blue="0.11400000005960464" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

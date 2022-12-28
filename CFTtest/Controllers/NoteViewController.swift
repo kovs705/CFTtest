@@ -23,6 +23,8 @@ class NoteViewController: UIViewController, UITextViewDelegate {
     
     var note = Note()
     
+    var defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,8 +37,22 @@ class NoteViewController: UIViewController, UITextViewDelegate {
         print("Image is hidden: \(image.isHidden)")
         print("Button is hidden: \(imageButton.isHidden)")
         
-        textView.delegate = self
-        textView.text = note.text
+        if defaults.object(forKey: "font") as? Int == nil {
+            defaults.set(12, forKey: "font")
+            // настройки не были открыты, так что автоматически мы поставили Вам размер шрифта 12
+        }
+        
+        if note.emoji != "💀" {
+            textView.delegate = self
+            textView.text = note.text
+            textView.isEditable = true
+            
+            textView.font = UIFont.systemFont(ofSize: CGFloat(defaults.object(forKey: "font") as! Int))
+        } else {
+            textView.delegate = self
+            textView.text = "Oops, you've got a wrong random emoji, try creating another new note😈"
+            textView.isEditable = false
+        }
         
         image.frame = CGRect(x: 0, y: 0, width: image.bounds.width, height: 250)
         

@@ -49,6 +49,17 @@ class ViewController: UIViewController {
     }
     
     
+    @IBAction func openSettings(_ sender: UIBarButtonItem) {
+        let settingsVC = SettingsVC()
+        if let sheet = settingsVC.sheetPresentationController {
+            sheet.detents = [.medium()]
+            sheet.preferredCornerRadius = 20
+        }
+        
+        present(settingsVC, animated: true)
+    }
+    
+    
     @IBAction func addNote(_ sender: UIBarButtonItem) {
         
         let alert = UIAlertController(title: "New note", message: "Enter a name for the note", preferredStyle: .alert)
