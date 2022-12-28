@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="91" translatesAutoresizingMaskIntoConstraints="NO" id="b4o-jn-h1n">
-                                <rect key="frame" x="31" y="59" width="331" height="32"/>
+                                <rect key="frame" x="31" y="84" width="331" height="32"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Size of the font" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="axf-By-85M">
                                         <rect key="frame" x="0.0" y="5.9999999999999982" width="146" height="20.333333333333329"/>
@@ -39,7 +39,7 @@
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="b4o-jn-h1n" secondAttribute="trailing" constant="15" id="BnA-Or-T5t"/>
                             <constraint firstItem="b4o-jn-h1n" firstAttribute="leading" secondItem="lys-28-4oI" secondAttribute="leadingMargin" constant="15" id="Mce-gB-3UQ"/>
-                            <constraint firstItem="b4o-jn-h1n" firstAttribute="top" secondItem="lys-28-4oI" secondAttribute="topMargin" id="alB-bX-Ghr"/>
+                            <constraint firstItem="b4o-jn-h1n" firstAttribute="top" secondItem="lys-28-4oI" secondAttribute="topMargin" constant="25" id="alB-bX-Ghr"/>
                         </constraints>
                     </view>
                     <connections>
@@ -196,7 +196,7 @@
                             </imageReference>
                             <connections>
                                 <action selector="openSettings:" destination="z3y-fb-U35" id="92Q-kQ-eAQ"/>
-                                <segue destination="TKD-Lc-gI1" kind="presentation" modalTransitionStyle="partialCurl" id="eb3-3f-fav"/>
+                                <segue destination="TKD-Lc-gI1" kind="presentation" id="BA9-m8-6uG"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="XXS-su-NUJ">

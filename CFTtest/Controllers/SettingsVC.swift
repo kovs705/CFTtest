@@ -13,7 +13,7 @@ class SettingsVC: UIViewController {
     @IBOutlet weak var fontLabel: UILabel!
     @IBOutlet weak var fontStepper: UIStepper!
     
-    var sizeOfFont: Int = 0 {
+    var sizeOfFont: Int = 12 {
         didSet {
             fontLabel.text = "Size of the font: \(sizeOfFont)"
         }
@@ -25,12 +25,14 @@ class SettingsVC: UIViewController {
         super.viewDidLoad()
         
         if defaults.object(forKey: "font") as? Int == nil {
-            defaults.set(12, forKey: "font")
+            defaults.set(16, forKey: "font")
             sizeOfFont = defaults.object(forKey: "font") as! Int
+            fontStepper.value = Double(defaults.object(forKey: "font") as! Int)
         } else {
             sizeOfFont = defaults.object(forKey: "font") as! Int
+            fontStepper.value = Double(defaults.object(forKey: "font") as! Int)
         }
-        
+        print(sizeOfFont)
         fontLabel.text = "Size of the font: \(sizeOfFont)"
         fontStepper.addTarget(self, action: #selector(fontChanged), for: .valueChanged)
     }

@@ -52,7 +52,7 @@ class ViewController: UIViewController {
     @IBAction func openSettings(_ sender: UIBarButtonItem) {
         let settingsVC = SettingsVC()
         if let sheet = settingsVC.sheetPresentationController {
-            sheet.detents = [.medium()]
+            sheet.detents = [.medium(), .large()]
             sheet.preferredCornerRadius = 20
         }
         
